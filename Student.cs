@@ -6,9 +6,12 @@
         public string StudentFirstName { get; set; }
         public string StudentLastName { get; set; }
         public int FK_PromotionId { get; set; }
+        public double StudentAverage { get; set; }
         public override string ToString()
         {
-            return StudentFirstName + "-" + StudentLastName + ":\n" + "ID = " + StudentId + " ; " + "Promotion = " + FK_PromotionId + "\n";
+            return StudentFirstName + "-" + StudentLastName + ":\n" + 
+                "ID = " + StudentId + " ; " + "Promotion = " + FK_PromotionId + "\n" +
+                "Moyenne = " + StudentAverage;
         }
     }
 }

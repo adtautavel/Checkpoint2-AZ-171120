@@ -15,16 +15,17 @@ namespace Checkpoint2_AZ_171120_DAL
             DataAbstractionLayer.Open(stringBuilder);
 
             //Retourne tous les étudiants en base de données
-          /*  IEnumerable<Student> student = DataAbstractionLayer.SelectAllStudents();
+           IEnumerable<Student> student = DataAbstractionLayer.SelectAllStudents();
             foreach (Student studenti in student)
             {
                 Console.WriteLine(studenti.ToString());
             }
-          */
+          
             //Retourne un étudiant en fonction de son nom de famille
-            Student student = DataAbstractionLayer.SelectStudentByLastName("Kraillo");
+           /*
+            * Student student = DataAbstractionLayer.SelectStudentByLastName("Kraillo");
             Console.WriteLine(student.ToString());
-           
+           */
             DataAbstractionLayer.Close();
         }
     }

@@ -19,6 +19,21 @@ namespace Checkpoint2_AZ_171120_DAL
             _connection.Close();
         }
 
+        internal static Dictionary<int,double> GetAverageAllStudents()
+        {
+            SqlCommand command = _connection.CreateCommand();
+            command.CommandText = "SELECT StudentId, AVG(ExamNote) FROM Students, Exams WHERE StudentId = FK_StudentId GROUP BY StudentId; ";
+            SqlDataReader reader = command.ExecuteReader();
+            Dictionary<int, double> studentAverage = new Dictionary<int, double>();
+            while(reader.Read())
+            {
+                studentAverage.Add(reader.GetInt32(0), reader.GetDouble(1));
+            }
+            reader.Close();
+
+            return studentAverage;
+        }
+
         internal static IEnumerable<Student> SelectAllStudents()
         {
             SqlCommand command = _connection.CreateCommand();
@@ -35,7 +50,18 @@ namespace Checkpoint2_AZ_171120_DAL
                     FK_PromotionId = reader.GetInt32(3),
                 };
                 Students.Add(Student);
+                           
             }
+
+            Dictionary<int, double> studentAverage = new Dictionary<int, double>();
+            studentAverage = GetAverageAllStudents();
+
+            foreach (Student student in Students)
+            {
+                int studentId = student.StudentId;
+                student.StudentAverage = studentAverage[studentId];
+            }
+
             reader.Close();
             return Students;
         }
