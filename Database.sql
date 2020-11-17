@@ -27,7 +27,8 @@ CREATE TABLE Exams (
 GO
 
 INSERT INTO Promotion (PromotionLanguage)
-VALUES ('Euskera', 'Occita')
+VALUES	('Euskera'),
+		('Occita');
 GO
 
 INSERT INTO Students (StudentFirstName, StudentLastName, FK_PromotionId)
@@ -75,4 +76,3 @@ VALUES
 	(10, 6),
 	(10, 13),
 	(10, 18);
-
